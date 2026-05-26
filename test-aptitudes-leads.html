@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Aptitudes - Adultos Mayores</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        
+        #container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .content {
+            padding: 2rem 1.5rem;
+        }
+        
+        h1 {
+            font-size: 26px;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+        
+        h2 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+        
+        h3 {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 0.5px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #378add;
+            box-shadow: 0 0 0 3px rgba(55, 138, 221, 0.1);
+        }
+        
+        button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background-color: #378add;
+            color: white;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2965a3;
+        }
+        
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+        
+        .btn-option {
+            background-color: white;
+            border: 0.5px solid #ddd;
+            color: #1a1a1a;
+            text-align: left;
+            padding: 1rem;
+            width: 100%;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+        
+        .btn-option:hover {
+            background-color: #f5f5f5;
+            border-color: #999;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: #378add;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+        
+        .question-box {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 0.5px solid #eee;
+        }
+        
+        .strength-item {
+            margin-bottom: 1rem;
+        }
+        
+        .strength-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .strength-bar {
+            width: 100%;
+            height: 6px;
+            background-color: #f0f0f0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .strength-fill {
+            height: 100%;
+            background-color: #378add;
+        }
+        
+        .course-card {
+            background-color: white;
+            border: 0.5px solid #ddd;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 12px;
+        }
+        
+        .course-card h4 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+        
+        .course-card p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        
+        .course-type {
+            display: inline-block;
+            font-size: 12px;
+            background-color: #f5f5f5;
+            color: #666;
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            border: 0.5px solid #ddd;
+            color: #1a1a1a;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .success-message {
+            background-color: #f0f9f0;
+            border: 0.5px solid #90ee90;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            color: #2d5016;
+            font-size: 14px;
+        }
+        
+        .error-message {
+            background-color: #fff0f0;
+            border: 0.5px solid #ffcccc;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            color: #8b0000;
+            font-size: 14px;
+        }
+        
+        .center-text {
+            text-align: center;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script>
+        const API_URL = 'https://script.google.com/macros/s/AKfycbz86OM4pPoLHaSiIrZNcurAfPDECF7UN-lMNgDAZflcBuM7yshkt5iRwkj9gs2WvTw0/exec';
+        
+        let appState = {
+            screen: 'form',
+            leadData: {},
+            currentQuestion: 0,
+            responses: {},
+            loading: false,
+            error: null
+        };
+
+        const questions = [
+            { id: 'music_love', category: 'inteligencia_musical', question: '¿Disfruto escuchando diferentes tipos de música y me hace sentir inspirado o calmado?', options: ['Nada', 'Un poco', 'Bastante', 'Mucho'] },
+            { id: 'numbers_logic', category: 'inteligencia_logica', question: '¿Me interesa entender cómo funcionan las cosas (finanzas, presupuestos, números)?', options: ['Nada', 'Un poco', 'Bastante', 'Mucho'] },
+            { id: 'words_writing', category: 'inteligencia_linguistica', question: '¿Disfruto leyendo, escribiendo o teniendo conversaciones profundas?', options: ['Nada', 'Un poco', 'Bastante', 'Mucho'] },
+            { id: 'art_beauty', category: 'inteligencia_espacial', question: '¿Me atrae el arte, el diseño y la belleza visual (cuadros, fotografía, arquitectura)?', options: ['Nada', 'Un poco', 'Bastante', 'Mucho'] },
+            { id: 'movement_body', category: 'inteligencia_corporal', question: '¿Me gusta estar activo físicamente (caminar, cocinar, hacer manualidades)?', options: ['Nada', 'Un poco', 'Bastante', 'Mucho'] },
+            { id: 'nature_environment', category: 'inteligencia_naturalista', question: '¿Me interesan la naturaleza, el medio ambiente y cuidar el planeta?', options: ['Nada', 'Un poco', 'Bastante', 'Mucho'] },
+            { id: 'helping_people', category: 'inteligencia_interpersonal', question: '¿Disfruto ayudando, enseñando o trabajando con otras personas?', options: ['Nada', 'Un poco', 'Bastante', 'Mucho'] },
+            { id: 'self_knowledge', category: 'inteligencia_intrapersonal', question: '¿Me gusta reflexionar, meditar y comprender mis propias emociones?', options: ['Nada', 'Un poco', 'Bastante', 'Mucho'] },
+            { id: 'technology_interest', category: 'transformacion_digital', question: '¿Quiero aprender a usar mejor la tecnología y las apps digitales?', options: ['Nada', 'Un poco', 'Bastante', 'Mucho'] },
+            { id: 'business_entrepreneur', category: 'negocio_emprendimiento', question: '¿Me interesa emprender, hacer consultoría o iniciar un proyecto empresarial?', options: ['Nada', 'Un poco', 'Bastante', 'Mucho'] },
+            { id: 'finances_planning', category: 'finanzas_planificacion', question: '¿Necesito ayuda entender mis finanzas personales o planificar mi retiro?', options: ['Nada', 'Un poco', 'Bastante', 'Mucho'] },
+            { id: 'life_transition', category: 'bienestar_transicion', question: '¿Estoy en una transición vital (jubilación, cambio de vida) y quiero darle nuevo sentido?', options: ['Nada', 'Un poco', 'Bastante', 'Mucho'] },
+            { id: 'health_wellness', category: 'salud_bienestar', question: '¿Me preocupa mi salud, nutrición y quiero vivir con más vitalidad?', options: ['Nada', 'Un poco', 'Bastante', 'Mucho'] },
+            { id: 'social_impact', category: 'impacto_social', question: '¿Me importa contribuir socialmente a través del voluntariado o filantropía?', options: ['Nada', 'Un poco', 'Bastante', 'Mucho'] },
+            { id: 'creativity_expression', category: 'creatividad_expresion', question: '¿Disfruto expresarme creativamente (presentaciones, cocina, comunicación)?', options: ['Nada', 'Un poco', 'Bastante', 'Mucho'] }
+        ];
+
+        const courses = {
+            1: { title: 'La Música como Experiencia, Memoria y Sentido', type: 'Bienestar Integral', desc: 'Explorar la música para inspiración, sanación y liderazgo cultural' },
+            2: { title: 'Cómo Gestionar Herencias y Sucesiones (Presencial)', type: 'Business', desc: 'Planifica tu legado con estrategias legales y financieras' },
+            3: { title: 'Cómo Gestionar Herencias y Sucesiones (Virtual)', type: 'Business', desc: 'Planifica tu legado (modalidad en línea)' },
+            4: { title: 'Presentaciones que Impactan: PowerPoint y Plataformas', type: 'Comunicación', desc: 'Diseña y comunica ideas de forma visual y profesional' },
+            5: { title: 'Reinvención Personal Después de la Jubilación', type: 'Bienestar Integral', desc: 'Define un proyecto de vida con propósito' },
+            6: { title: 'Nutrición para la Longevidad', type: 'Salud', desc: 'Principios de nutrición para vitalidad' },
+            7: { title: 'Neurobienestar: Activa tu Mente', type: 'Salud', desc: 'Estrategias para salud cognitiva y equilibrio' },
+            8: { title: 'Sabores y Culturas: Viaja por el Mundo', type: 'Humanidades', desc: 'Experiencias culinarias desde tu cocina' },
+            9: { title: 'Confianza Digital: Apps y Smartphones sin Miedo', type: 'Transformación Digital', desc: 'Uso seguro de herramientas digitales' },
+            10: { title: 'Consultoría con Causa: Consultor Después del Retiro', type: 'Business', desc: 'Estructura servicios de consultoría' },
+            11: { title: 'Historia del Arte: Descubre y Viaja a Través del Tiempo', type: 'Humanidades', desc: 'Principales etapas del arte' },
+            12: { title: 'Finanzas para una Vida Plena', type: 'Bienestar Integral', desc: 'Gestión financiera para jubilación' },
+            13: { title: 'Liderazgo para Filantropía y Voluntariado', type: 'Business', desc: 'Competencias de liderazgo para impacto social' },
+            14: { title: 'IA en tu Vida: Simplifica Tareas y Potencia Proyectos', type: 'Inteligencia Artificial', desc: 'Herramientas de IA para actividades' },
+            15: { title: 'Emprendiendo con Éxito después de los 50', type: 'Business', desc: 'Habilidades emprendedoras' },
+            16: { title: 'Despedidas y Recuerdos en la Etapa Madura', type: 'Bienestar Integral', desc: 'Resiliencia y gestión del duelo' }
+        };
+
+        function renderForm() {
+            return `
+                <div class="content">
+                    <div class="header">
+                        <h1>Test de Aptitudes</h1>
+                        <p>Descubre qué cursos son ideales para ti</p>
+                    </div>
+                    
+                    <form onsubmit="submitForm(event)">
+                        <div class="form-group">
+                            <label>Nombre completo *</label>
+                            <input type="text" id="nombre" placeholder="Tu nombre" required />
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" id="email" placeholder="tu@email.com" required />
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Teléfono</label>
+                            <input type="tel" id="telefono" placeholder="+52 ..." />
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Institución u Organización</label>
+                            <input type="text" id="organizacion" placeholder="Opcional" />
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Comenzar Test</button>
+                    </form>
+                </div>
+            `;
+        }
+
+        function renderQuestion() {
+            const q = questions[appState.currentQuestion];
+            const progress = Math.round(((appState.currentQuestion + 1) / questions.length) * 100);
+            
+            let html = `
+                <div class="content">
+                    <div class="progress-info">
+                        <span>Pregunta ${appState.currentQuestion + 1} de ${questions.length}</span>
+                        <span>${progress}%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${progress}%;"></div>
+                    </div>
+                    
+                    <div class="question-box">
+                        <h2>${q.question}</h2>
+                    </div>
+                    
+                    <div style="margin-bottom: 2rem;">
+            `;
+            
+            q.options.forEach((option, idx) => {
+                html += `<button class="btn-option" onclick="selectOption(${idx})">${option}</button>`;
+            });
+            
+            html += `</div>`;
+            
+            if (appState.currentQuestion > 0) {
+                html += `<button class="btn-secondary" onclick="previousQuestion()">← Anterior</button>`;
+            }
+            
+            html += `</div>`;
+            return html;
+        }
+
+        function calculateScores() {
+            const scores = {};
+            const categoryMap = {};
+            
+            questions.forEach(q => {
+                if (!categoryMap[q.category]) categoryMap[q.category] = [];
+                categoryMap[q.category].push(q);
+            });
+            
+            Object.keys(categoryMap).forEach(cat => {
+                scores[cat] = 0;
+            });
+            
+            questions.forEach(q => {
+                const value = appState.responses[q.id] || 0;
+                const categoryScore = (value / 3) * 100;
+                scores[q.category] += categoryScore / categoryMap[q.category].length;
+            });
+            
+            return scores;
+        }
+
+        function getRecommendations() {
+            const courseMapping = {
+                'inteligencia_musical': [1],
+                'inteligencia_espacial': [11, 4],
+                'inteligencia_logica': [2, 3, 12],
+                'inteligencia_linguistica': [5],
+                'inteligencia_corporal': [6, 7, 8],
+                'inteligencia_naturalista': [8],
+                'inteligencia_interpersonal': [13, 10],
+                'inteligencia_intrapersonal': [5, 16, 12],
+                'transformacion_digital': [9, 14],
+                'negocio_emprendimiento': [10, 15],
+                'finanzas_planificacion': [2, 3, 12],
+                'bienestar_transicion': [5, 12],
+                'salud_bienestar': [6, 7],
+                'impacto_social': [13, 15],
+                'creatividad_expresion': [4, 1]
+            };
+            
+            const scores = calculateScores();
+            const courseScores = {};
+            
+            Object.keys(courseMapping).forEach(category => {
+                courseMapping[category].forEach(courseId => {
+                    if (!courseScores[courseId]) courseScores[courseId] = 0;
+                    courseScores[courseId] += scores[category] * 0.7;
+                });
+            });
+            
+            return Object.entries(courseScores)
+                .sort(([,a], [,b]) => b - a)
+                .slice(0, 3)
+                .map(([id,]) => parseInt(id));
+        }
+
+        async function sendToSheet(recommendations) {
+            const topScores = Object.entries(calculateScores())
+                .sort(([,a], [,b]) => b - a)
+                .slice(0, 1)
+                .map(([k]) => k)[0];
+            
+            const data = {
+                nombre: appState.leadData.nombre,
+                email: appState.leadData.email,
+                telefono: appState.leadData.telefono,
+                organizacion: appState.leadData.organizacion,
+                resultadoPrincipal: topScores,
+                cursosRecomendados: recommendations.map(id => courses[id].title).join(' | ')
+            };
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(data)
+                });
+                return response.ok;
+            } catch (error) {
+                console.log('Datos guardados localmente:', data);
+                return true;
+            }
+        }
+
+        function renderResults() {
+            const recommendations = getRecommendations();
+            const scores = calculateScores();
+            
+            const topDomains = Object.entries(scores)
+                .sort(([,a], [,b]) => b - a)
+                .slice(0, 3)
+                .map(([k, v]) => ({ domain: k, score: Math.round(v) }));
+            
+            let html = `
+                <div class="content">
+                    <div class="header">
+                        <h1>Tu Perfil</h1>
+                        <p>Basado en tus respuestas</p>
+                    </div>
+                    
+                    <div style="background-color: #f9f9f9; border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; border: 0.5px solid #eee;">
+                        <h3>Tus Fortalezas Principales</h3>
+            `;
+            
+            topDomains.forEach(d => {
+                html += `
+                    <div class="strength-item">
+                        <div class="strength-label">
+                            <span>${d.domain}</span>
+                            <span style="font-weight: 500;">${d.score}%</span>
+                        </div>
+                        <div class="strength-bar">
+                            <div class="strength-fill" style="width: ${d.score}%;"></div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `</div><div><h3>Cursos Recomendados</h3>`;
+            
+            recommendations.forEach((courseId, idx) => {
+                const course = courses[courseId];
+                html += `
+                    <div class="course-card">
+                        <h4>${idx + 1}. ${course.title}</h4>
+                        <p>${course.desc}</p>
+                        <span class="course-type">${course.type}</span>
+                    </div>
+                `;
+            });
+            
+            html += `
+                    </div>
+                    <button class="btn-secondary" onclick="location.reload()">Hacer el test nuevamente</button>
+                </div>
+            `;
+            return html;
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            appState.leadData = {
+                nombre: document.getElementById('nombre').value,
+                email: document.getElementById('email').value,
+                telefono: document.getElementById('telefono').value,
+                organizacion: document.getElementById('organizacion').value
+            };
+            appState.screen = 'test';
+            appState.currentQuestion = 0;
+            render();
+        }
+
+        function selectOption(idx) {
+            const q = questions[appState.currentQuestion];
+            appState.responses[q.id] = idx;
+            
+            if (appState.currentQuestion < questions.length - 1) {
+                appState.currentQuestion++;
+                render();
+                window.scrollTo(0, 0);
+            } else {
+                finishTest();
+            }
+        }
+
+        function previousQuestion() {
+            if (appState.currentQuestion > 0) {
+                appState.currentQuestion--;
+                render();
+                window.scrollTo(0, 0);
+            }
+        }
+
+        async function finishTest() {
+            appState.loading = true;
+            render();
+            const recommendations = getRecommendations();
+            await sendToSheet(recommendations);
+            appState.screen = 'results';
+            appState.loading = false;
+            render();
+            window.scrollTo(0, 0);
+        }
+
+        function render() {
+            const container = document.getElementById('container');
+            let content = '';
+            
+            if (appState.loading) {
+                content = '<div class="loading"><p>Guardando datos...</p></div>';
+            } else if (appState.screen === 'form') {
+                content = renderForm();
+            } else if (appState.screen === 'test') {
+                content = renderQuestion();
+            } else if (appState.screen === 'results') {
+                content = renderResults();
+            }
+            
+            container.innerHTML = content;
+        }
+
+        render();
+    </script>
+</body>
+</html>
